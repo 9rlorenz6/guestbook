@@ -36,14 +36,14 @@ class GuestbookEntry {
 	private @Id @GeneratedValue Long id;
 	private final String name, text;
 	private final LocalDateTime date;
-	private final int age;
+	private Integer age = 0;
 	/**
 	 * Creates a new {@link GuestbookEntry} for the given name and text.
 	 *
 	 * @param name must not be {@literal null} or empty
 	 * @param text must not be {@literal null} or empty
 	 */
-	public GuestbookEntry(String name, String text, int age) {
+	public GuestbookEntry(String name, String text, Integer age) {
 
 		Assert.hasText(name, "Name must not be null or empty!");
 		Assert.hasText(text, "Text must not be null or empty!");
@@ -51,7 +51,7 @@ class GuestbookEntry {
 		this.name = name;
 		this.text = text;
 		this.date = LocalDateTime.now();
-		this.age = age;
+		this.age = (int) age;
 	}
 
 	@SuppressWarnings("unused")
