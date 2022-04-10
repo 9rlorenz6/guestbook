@@ -16,7 +16,6 @@
 package guestbook;
 
 import javax.validation.constraints.NotBlank;
-
 /**
  * Type to bind request payloads and make them available in the controller. In contrast to {@link GuestbookEntry} it is
  * particularly designed to also be able to capture invalid input, so that the raw form data can be bound and validated
@@ -31,7 +30,7 @@ class GuestbookForm {
 
 	private final @NotBlank String name;
 	private final @NotBlank String text;
-	private  @NotBlank Integer age = 0;
+	private final @NotBlank Integer age;
 	/**
 	 * Creates a new {@link GuestbookForm} with the given name, text and age. Spring Framework will use this constructor to
 	 * bind the values provided in the web form described in {@code src/main/resources/templates/guestbook.html}, in
@@ -46,7 +45,7 @@ class GuestbookForm {
 
 		this.name = name;
 		this.text = text;
-		this.age =  age;
+		this.age = age;
 	}
 
 	/**
@@ -70,7 +69,7 @@ class GuestbookForm {
 	public String getText() {
 		return text;
 	}
-	public int getage() {
+	public int getAge() {
 		return age;
 	}
 
@@ -81,6 +80,6 @@ class GuestbookForm {
 	 * @throws IllegalArgumentException if you call this on an instance without the name and text actually set.
 	 */
 	GuestbookEntry toNewEntry() {
-		return new GuestbookEntry(getName(), getText(), getage());
+		return new GuestbookEntry(getName(), getText(), 0);
 	}
 }
